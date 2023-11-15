@@ -1,0 +1,19 @@
+<?xml version="1.1" encoding="UTF-8"?>
+<expression:EMFExpression xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:expression="http:///expression.ecore" id="tMap_1=>" expression="customer.Employee_ID = row1.Employee_ID">
+  <variables name="customer.Employee_ID" value="null" talendType="id_String"/>
+  <variables name="customer.Employee_Country" value="null" talendType="id_String" nullable="true"/>
+  <variables name="customer.Company" value="null" talendType="id_String" nullable="true"/>
+  <variables name="customer.Department" value="null" talendType="id_String" nullable="true"/>
+  <variables name="customer.Section" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.Employee_ID" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.Start_Date" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.End_Date" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.Job_Title" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.Salary" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.Gender" value="null" talendType="id_String" nullable="true"/>
+  <variables name="row1.Birth_Date" value="null" talendType="id_Date" nullable="true"/>
+  <variables name="row1.Emp_Hire_Date" value="null" talendType="id_Date" nullable="true"/>
+  <variables name="row1.Emp_Term_Date" value="null" talendType="id_Date" nullable="true"/>
+  <variables name="row1.Manager_ID" value="null" talendType="id_String" nullable="true"/>
+  <variables name="customer.Employee_ID = row1.Employee_ID " value="null" talendType="id_String"/>
+</expression:EMFExpression>
