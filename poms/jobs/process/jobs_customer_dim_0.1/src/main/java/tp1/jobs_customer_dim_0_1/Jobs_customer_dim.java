@@ -358,6 +358,18 @@ public class Jobs_customer_dim implements TalendJob {
 			return this.Employee_ID;
 		}
 
+		public String Salary;
+
+		public String getSalary() {
+			return this.Salary;
+		}
+
+		public String Job_Title;
+
+		public String getJob_Title() {
+			return this.Job_Title;
+		}
+
 		@Override
 		public int hashCode() {
 			if (this.hashCodeDirty) {
@@ -396,6 +408,8 @@ public class Jobs_customer_dim implements TalendJob {
 		public void copyDataTo(customer_dimStruct other) {
 
 			other.Employee_ID = this.Employee_ID;
+			other.Salary = this.Salary;
+			other.Job_Title = this.Job_Title;
 
 		}
 
@@ -475,6 +489,10 @@ public class Jobs_customer_dim implements TalendJob {
 
 					this.Employee_ID = readString(dis);
 
+					this.Salary = readString(dis);
+
+					this.Job_Title = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -494,6 +512,10 @@ public class Jobs_customer_dim implements TalendJob {
 
 					this.Employee_ID = readString(dis);
 
+					this.Salary = readString(dis);
+
+					this.Job_Title = readString(dis);
+
 				} catch (IOException e) {
 					throw new RuntimeException(e);
 
@@ -510,6 +532,14 @@ public class Jobs_customer_dim implements TalendJob {
 
 				writeString(this.Employee_ID, dos);
 
+				// String
+
+				writeString(this.Salary, dos);
+
+				// String
+
+				writeString(this.Job_Title, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -523,6 +553,14 @@ public class Jobs_customer_dim implements TalendJob {
 
 				writeString(this.Employee_ID, dos);
 
+				// String
+
+				writeString(this.Salary, dos);
+
+				// String
+
+				writeString(this.Job_Title, dos);
+
 			} catch (IOException e) {
 				throw new RuntimeException(e);
 			}
@@ -535,6 +573,8 @@ public class Jobs_customer_dim implements TalendJob {
 			sb.append(super.toString());
 			sb.append("[");
 			sb.append("Employee_ID=" + Employee_ID);
+			sb.append(",Salary=" + Salary);
+			sb.append(",Job_Title=" + Job_Title);
 			sb.append("]");
 
 			return sb.toString();
@@ -1225,15 +1265,15 @@ public class Jobs_customer_dim implements TalendJob {
 					}
 				}
 
-				String url_tDBOutput_1 = "jdbc:mysql://" + "localhost" + ":" + "3306" + "/" + "orion" + "?"
+				String url_tDBOutput_1 = "jdbc:mariadb://" + "localhost" + ":" + "3306" + "/" + "orion" + "?"
 						+ properties_tDBOutput_1;
 
-				String driverClass_tDBOutput_1 = "com.mysql.cj.jdbc.Driver";
+				String driverClass_tDBOutput_1 = "org.mariadb.jdbc.Driver";
 
 				String dbUser_tDBOutput_1 = "root";
 
 				final String decryptedPassword_tDBOutput_1 = routines.system.PasswordEncryptUtil
-						.decryptPassword("enc:routine.encryption.key.v1:6kOVhf41rxR+7D68bNsBYAz2SHAHKSR8LdxuRA==");
+						.decryptPassword("enc:routine.encryption.key.v1:lj9sliE0UAmcoINnSdhcVys3yDPqyyWZwKbn7g==");
 
 				String dbPwd_tDBOutput_1 = decryptedPassword_tDBOutput_1;
 				java.lang.Class.forName(driverClass_tDBOutput_1);
@@ -1266,10 +1306,11 @@ public class Jobs_customer_dim implements TalendJob {
 				}
 				try (java.sql.Statement stmtCreate_tDBOutput_1 = conn_tDBOutput_1.createStatement()) {
 					stmtCreate_tDBOutput_1.execute("CREATE TABLE `" + tableName_tDBOutput_1
-							+ "`(`Employee_ID` INT(10)   not null ,primary key(`Employee_ID`))");
+							+ "`(`Employee_ID` VARCHAR(10)   not null ,`Salary` VARCHAR(50)   not null ,`Job_Title` VARCHAR(23)   not null ,primary key(`Employee_ID`))");
 				}
 
-				String insert_tDBOutput_1 = "INSERT INTO `" + "sortie" + "` (`Employee_ID`) VALUES (?)";
+				String insert_tDBOutput_1 = "INSERT INTO `" + "sortie"
+						+ "` (`Employee_ID`,`Salary`,`Job_Title`) VALUES (?,?,?)";
 				int batchSize_tDBOutput_1 = 100;
 				int batchSizeCounter_tDBOutput_1 = 0;
 
@@ -1344,7 +1385,7 @@ public class Jobs_customer_dim implements TalendJob {
 				String dbUser_tDBInput_1 = "root";
 
 				final String decryptedPassword_tDBInput_1 = routines.system.PasswordEncryptUtil
-						.decryptPassword("enc:routine.encryption.key.v1:uNu95Xn9DRcqVYHd3KMTEWwdYKAPLKBK48+VpQ==");
+						.decryptPassword("enc:routine.encryption.key.v1:v9PcJ9I9GTAmJey9K1WyxfzDChaX4WoL4b3QXQ==");
 
 				String dbPwd_tDBInput_1 = decryptedPassword_tDBInput_1;
 
@@ -1512,6 +1553,8 @@ public class Jobs_customer_dim implements TalendJob {
 
 // # Output table : 'customer_dim'
 								customer_dim_tmp.Employee_ID = customer.Employee_ID = row1.Employee_ID;
+								customer_dim_tmp.Salary = row1.Salary;
+								customer_dim_tmp.Job_Title = row1.Job_Title;
 								customer_dim = customer_dim_tmp;
 // ###############################
 
@@ -1556,6 +1599,18 @@ public class Jobs_customer_dim implements TalendJob {
 									pstmt_tDBOutput_1.setNull(1, java.sql.Types.VARCHAR);
 								} else {
 									pstmt_tDBOutput_1.setString(1, customer_dim.Employee_ID);
+								}
+
+								if (customer_dim.Salary == null) {
+									pstmt_tDBOutput_1.setNull(2, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_1.setString(2, customer_dim.Salary);
+								}
+
+								if (customer_dim.Job_Title == null) {
+									pstmt_tDBOutput_1.setNull(3, java.sql.Types.VARCHAR);
+								} else {
+									pstmt_tDBOutput_1.setString(3, customer_dim.Job_Title);
 								}
 
 								pstmt_tDBOutput_1.addBatch();
@@ -3252,6 +3307,6 @@ public class Jobs_customer_dim implements TalendJob {
 	ResumeUtil resumeUtil = null;
 }
 /************************************************************************************************
- * 101434 characters generated by Talend Open Studio for Data Integration on the
- * 15 novembre 2023 à 12:12:29 GMT+01:00
+ * 102828 characters generated by Talend Open Studio for Data Integration on the
+ * 17 décembre 2023 à 20:34:25 GMT+01:00
  ************************************************************************************************/

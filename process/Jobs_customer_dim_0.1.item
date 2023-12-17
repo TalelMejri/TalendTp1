@@ -43,7 +43,7 @@
     <elementParameter field="TEXT" name="PROPERTIES_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:C/qX5U2hkx+i9Kh5Um/K4MLmINnftjVCdxS0M9Q8" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS_IMPLICIT_CONTEXT" value="enc:system.encryption.key.v1:nrmaivW5VH7WLwzCBzQwKdjKIL2p4HSAVn5XySfd" show="false"/>
     <elementParameter field="FILE" name="DBFILE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="DBTABLE_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="QUERY_CONDITION_IMPLICIT_CONTEXT" value="&quot;&quot;" show="false"/>
@@ -78,7 +78,7 @@
     <elementParameter field="TEXT" name="PROPERTIES" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="SCHEMA_DB" value="&quot;&quot;" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;&quot;" show="false"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:yzpTPW85oVg8puK8I+D5JRh+di7il463F9zttcGF" show="false"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:KbKMnbHfp5iKMYGu7jM/VhSMFnrRP1iG30ycc00+" show="false"/>
     <elementParameter field="FILE" name="DBFILE" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_STATS" value="&quot;&quot;" show="false"/>
     <elementParameter field="DBTABLE" name="TABLE_LOGS" value="&quot;&quot;" show="false"/>
@@ -117,7 +117,7 @@
     <elementParameter field="TEXT" name="DBNAME" value="&quot;orion&quot;"/>
     <elementParameter field="TEXT" name="TYPE" value="MYSQL" show="false"/>
     <elementParameter field="TEXT" name="USER" value="&quot;root&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:PoDIxhamEV/Fx0VGLzBXVAPduth9LCsoAysVnCpr"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:s7fFz+v3MmlG2JOpx6qWtzO3vD7fSpp2vXEIi4XQ"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;organization_dim&quot;"/>
     <elementParameter field="QUERYSTORE_TYPE" name="QUERYSTORE" value="&quot;&quot;"/>
     <elementParameter field="TECHNICAL" name="QUERYSTORE:REPOSITORY_QUERYSTORE_TYPE" value="" show="false"/>
@@ -145,6 +145,7 @@
       <elementValue elementRef="SCHEMA_COLUMN" value="Section"/>
       <elementValue elementRef="TRIM" value="false"/>
     </elementParameter>
+    <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="organization_dim" name="tDBInput_1">
       <column comment="" key="true" length="10" name="Employee_ID" nullable="false" pattern="" precision="0" sourceType="INT" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
@@ -182,12 +183,16 @@
       <column comment="" key="true" length="10" name="Employee_ID" nullable="false" pattern="" precision="0" sourceType="INT" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="50" name="Salary" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Job_Title" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="0" type="id_String" usefulColumn="true"/>
     </metadata>
     <nodeData xsi:type="TalendMapper:MapperData">
       <uiProperties shellMaximized="true"/>
       <varTables sizeState="INTERMEDIATE" name="Var"/>
       <outputTables sizeState="INTERMEDIATE" name="customer_dim">
         <mapperTableEntries name="Employee_ID" expression="customer.Employee_ID = row1.Employee_ID " type="id_String"/>
+        <mapperTableEntries name="Salary" expression="row1.Salary " type="id_String"/>
+        <mapperTableEntries name="Job_Title" expression="row1.Job_Title " type="id_String"/>
       </outputTables>
       <inputTables sizeState="INTERMEDIATE" name="customer" matchingMode="UNIQUE_MATCH" lookupMode="LOAD_ONCE">
         <mapperTableEntries name="Employee_ID" type="id_String"/>
@@ -212,7 +217,7 @@
   </node>
   <node componentName="tMysqlOutput" componentVersion="0.102" offsetLabelX="0" offsetLabelY="0" posX="960" posY="192">
     <elementParameter field="TEXT" name="UNIQUE_NAME" value="tDBOutput_1" show="false"/>
-    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="MYSQL_8"/>
+    <elementParameter field="CLOSED_LIST" name="DB_VERSION" value="MARIADB"/>
     <elementParameter field="CHECK" name="USE_EXISTING_CONNECTION" value="false"/>
     <elementParameter field="COMPONENT_LIST" name="CONNECTION" value="" show="false"/>
     <elementParameter field="TEXT" name="TYPE" value="MYSQL" show="false"/>
@@ -220,7 +225,7 @@
     <elementParameter field="TEXT" name="PORT" value="&quot;3306&quot;"/>
     <elementParameter field="TEXT" name="DBNAME" value="&quot;orion&quot;"/>
     <elementParameter field="TEXT" name="USER" value="&quot;root&quot;"/>
-    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:3kKHJomxol8NJg8LAYtqn3IGqqa92kNc4ofCj2Po"/>
+    <elementParameter field="PASSWORD" name="PASS" value="enc:system.encryption.key.v1:RONDjcOJZZ+rv0nM0sdmUmnqb3smx9KxL3VRfmSN"/>
     <elementParameter field="DBTABLE" name="TABLE" value="&quot;sortie&quot;"/>
     <elementParameter field="CLOSED_LIST" name="TABLE_ACTION" value="DROP_IF_EXISTS_AND_CREATE"/>
     <elementParameter field="CLOSED_LIST" name="DATA_ACTION" value="INSERT"/>
@@ -246,6 +251,16 @@
       <elementValue elementRef="DELETE_KEY" value="false"/>
       <elementValue elementRef="UPDATABLE" value="true"/>
       <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Salary"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
+      <elementValue elementRef="SCHEMA_COLUMN" value="Job_Title"/>
+      <elementValue elementRef="UPDATE_KEY" value="false"/>
+      <elementValue elementRef="DELETE_KEY" value="false"/>
+      <elementValue elementRef="UPDATABLE" value="true"/>
+      <elementValue elementRef="INSERTABLE" value="true"/>
     </elementParameter>
     <elementParameter field="CHECK" name="USE_HINT_OPTIONS" value="false"/>
     <elementParameter field="TABLE" name="HINT_OPTIONS" show="false"/>
@@ -255,15 +270,19 @@
     <elementParameter field="CHECK" name="SUPPORT_NULL_WHERE" value="false" show="false"/>
     <elementParameter field="TEXT" name="CONNECTION_FORMAT" value="row"/>
     <metadata connector="FLOW" label="customer_dim" name="tDBOutput_1">
-      <column comment="" key="true" length="10" name="Employee_ID" nullable="false" pattern="" precision="0" sourceType="INT" type="id_String" usefulColumn="true">
+      <column comment="" key="true" length="10" name="Employee_ID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="50" name="Salary" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Job_Title" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
     </metadata>
     <metadata connector="REJECT" label="customer_dim" name="REJECT">
-      <column comment="" key="true" length="10" name="Employee_ID" nullable="false" pattern="" precision="0" sourceType="INT" type="id_String" usefulColumn="true">
+      <column comment="" key="true" length="10" name="Employee_ID" nullable="false" pattern="" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true">
         <additionalField key="Comment" value=""/>
       </column>
+      <column comment="" key="false" length="50" name="Salary" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
+      <column comment="" key="false" length="23" name="Job_Title" nullable="false" pattern="&quot;dd-MM-yyyy&quot;" precision="0" sourceType="VARCHAR" type="id_String" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorCode" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <column defaultValue="" key="false" length="255" name="errorMessage" nullable="true" precision="0" sourceType="VARCHAR" type="id_String" originalLength="-1" usefulColumn="true"/>
       <additionalProperties key="Comment" value=""/>
@@ -275,7 +294,7 @@
     <elementParameter field="TECHNICAL" name="PROPERTY:REPOSITORY_PROPERTY_TYPE" value="_AgniUHiQEe6XZvuDljiePw" show="false"/>
     <elementParameter field="CHECK" name="VERSION_2007" value="false"/>
     <elementParameter field="FILE" name="FILENAME" value="&quot;C:/Users/talel/Desktop/Talend/projet DWH/staff.xls&quot;"/>
-    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:fhsnlg5pRjQieGcq1rMf0B3oLp+MHXLVASiQVKT9" show="false"/>
+    <elementParameter field="PASSWORD" name="PASSWORD" value="enc:system.encryption.key.v1:r3HrV1phF487kYTrgnNyD1qFl4dECYFBVIrLQLt1" show="false"/>
     <elementParameter field="CHECK" name="ALL_SHEETS" value="true"/>
     <elementParameter field="TABLE" name="SHEETLIST" show="false">
       <elementValue elementRef="SHEETNAME" value="&quot;_t1&quot;"/>
